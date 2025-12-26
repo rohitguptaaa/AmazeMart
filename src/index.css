@@ -1,0 +1,284 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @import url('https://fonts.googleapis.com/css2?family=Ember:wght@400;500;700&display=swap'); */
+
+@layer base {
+  :root {
+    /* Amazon-inspired color palette */
+    --background: 0 0% 97%;
+    --foreground: 210 11% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 15%;
+
+    /* Amazon Orange */
+    --primary: 33 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Amazon Dark Navy */
+    --secondary: 210 29% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 210 11% 45%;
+
+    --accent: 33 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 33 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom Amazon variables */
+    --amazon-navy: 210 29% 10%;
+    --amazon-navy-light: 210 25% 15%;
+    --amazon-orange: 33 100% 50%;
+    --amazon-orange-hover: 33 100% 45%;
+    --amazon-yellow: 48 100% 50%;
+    --amazon-teal: 180 100% 27%;
+    --amazon-success: 145 63% 42%;
+    --amazon-star: 45 100% 51%;
+    --amazon-link: 200 100% 35%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(to bottom, hsl(210 29% 10%) 0%, hsl(210 25% 20%) 100%);
+    --gradient-deal: linear-gradient(135deg, hsl(0 84% 60%) 0%, hsl(33 100% 50%) 100%);
+    
+    /* Shadows */
+    --shadow-card: 0 2px 5px 0 rgba(0, 0, 0, 0.05);
+    --shadow-card-hover: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+    --shadow-dropdown: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+    
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 33 100% 50%;
+  }
+
+  .dark {
+    --background: 210 29% 10%;
+    --foreground: 210 20% 95%;
+
+    --card: 210 25% 13%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 210 25% 13%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 33 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 20%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 210 20% 18%;
+    --muted-foreground: 210 15% 60%;
+
+    --accent: 33 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 22%;
+    --input: 210 20% 22%;
+    --ring: 33 100% 50%;
+
+    --sidebar-background: 210 29% 8%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 33 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 15%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 210 20% 18%;
+    --sidebar-ring: 33 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .amazon-header {
+    @apply bg-secondary text-secondary-foreground;
+  }
+
+  .amazon-header-bottom {
+    @apply bg-amazon-navy-light text-secondary-foreground;
+  }
+
+  .amazon-button {
+    @apply bg-gradient-to-b from-amazon-yellow to-primary text-foreground font-medium 
+           rounded-lg px-4 py-2 transition-all duration-200 
+           hover:from-primary hover:to-amazon-orange-hover
+           active:scale-[0.98] shadow-sm;
+  }
+
+  .amazon-button-secondary {
+    @apply bg-card border border-border text-foreground font-medium 
+           rounded-lg px-4 py-2 transition-all duration-200 
+           hover:bg-muted active:scale-[0.98];
+  }
+
+  .amazon-card {
+    @apply bg-card rounded-lg shadow-card transition-all duration-300 
+           hover:shadow-card-hover;
+  }
+
+  .amazon-link {
+    @apply text-amazon-link hover:text-primary hover:underline cursor-pointer 
+           transition-colors duration-200;
+  }
+
+  .amazon-badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium 
+           bg-destructive text-destructive-foreground;
+  }
+
+  .amazon-price {
+    @apply text-foreground font-medium;
+  }
+
+  .amazon-price-symbol {
+    @apply text-sm align-top;
+  }
+
+  .amazon-price-whole {
+    @apply text-2xl font-semibold;
+  }
+
+  .amazon-price-fraction {
+    @apply text-sm align-top;
+  }
+
+  .amazon-star {
+    @apply text-amazon-star;
+  }
+
+  .product-card {
+    @apply amazon-card p-4 flex flex-col h-full;
+  }
+
+  .category-card {
+    @apply amazon-card p-5 hover:scale-[1.02] cursor-pointer;
+  }
+
+  .deal-badge {
+    @apply bg-gradient-deal text-white px-2 py-1 rounded text-xs font-bold;
+  }
+
+  .search-input {
+    @apply w-full rounded-l-md border-0 py-2.5 px-4 text-foreground 
+           placeholder:text-muted-foreground focus:ring-2 focus:ring-primary 
+           focus:outline-none;
+  }
+
+  .search-button {
+    @apply bg-primary hover:bg-amazon-orange-hover px-5 rounded-r-md 
+           transition-colors duration-200;
+  }
+
+  .nav-link {
+    @apply text-secondary-foreground hover:text-primary transition-colors 
+           duration-200 text-sm font-medium;
+  }
+}
+
+@layer utilities {
+  .text-amazon-link {
+    color: hsl(var(--amazon-link));
+  }
+
+  .bg-amazon-navy {
+    background-color: hsl(var(--amazon-navy));
+  }
+
+  .bg-amazon-navy-light {
+    background-color: hsl(var(--amazon-navy-light));
+  }
+
+  .bg-amazon-orange {
+    background-color: hsl(var(--amazon-orange));
+  }
+
+  .bg-amazon-orange-hover {
+    background-color: hsl(var(--amazon-orange-hover));
+  }
+
+  .bg-amazon-yellow {
+    background-color: hsl(var(--amazon-yellow));
+  }
+
+  .text-amazon-star {
+    color: hsl(var(--amazon-star));
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-deal {
+    background: var(--gradient-deal);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-card-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .shadow-dropdown {
+    box-shadow: var(--shadow-dropdown);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
